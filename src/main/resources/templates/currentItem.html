@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="${item.name}"></title>
+</head>
+<body>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{/items/showAll}">Показать список товаров</a>
+<h3 th:text="${item.name}"></h3>
+<p th:text="'Описание: '+${item.description}"></p>
+<p th:text="'Текущая цена: '+${item.price}"></p>
+<table th:if="${!(item.users.empty())}">
+    <tr>
+        <td><h3>Список купивших:</h3></td>
+    </tr>
+    <tr th:each="user : ${item.users}">
+        <td th:text="${user.name}"></td>
+    </tr>
+</table>
+<h3 th:if="${item.users.empty()}">Список купивших пуст</h3>
+</body>
+</html>

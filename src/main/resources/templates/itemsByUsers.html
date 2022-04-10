@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Покупки конкретного пользователя</title>
+</head>
+<body>
+<div th:if="${items==null}">
+    <form th:action="@{/users/showItByUs}" method="post">
+        <h1>Введите данные покупателя</h1>
+        <input type="text" pattern=".{1,500}" name="usersName" placeholder="Введите Ф.И.О." required/>
+        <input type="text" pattern="\d{4}" name="usersSeria" placeholder="Введите серию пасспорта" required>
+        <input type="text" pattern="\d{6}" name="usersNumber" placeholder="Введите номер пасспорта" required><br><br>
+        <input type="submit" value="Выбрать покупателя">
+        <input type="reset" value="Очистить форму">
+    </form>
+    <a th:href="@{/mainPage}">На главную</a>
+</div>
+<div th:if="${items!=null}">
+    <div th:if="${items.isEmpty()}">
+        <h3 th:text="${usersName}+' ничего не приобретал/a'"></h3>
+        <a href="mainPage.html" th:href="@{/mainPage}">На главную</a>
+        <a th:href="@{/users/showItByUs}">Показать все товары конкретного покупателя</a>
+    </div>
+    <div th:if="${(!items.isEmpty())}">
+        <a href="mainPage.html" th:href="@{/mainPage}">На главную</a>
+        <table>
+            <tr>
+                <td><h3 th:text="${usersName}+' приобрёл/а следующие товары:'"></h3></td>
+            </tr>
+            <tr>
+                <td><h3>Название</h3></td>
+                <td><h3>Цена</h3></td>
+            </tr> <!--ряд с ячейками заголовков-->
+            <tr th:each="item : ${items}">
+                <td><a th:href="@{'/items/showCurrent/'+${item.id}}" th:text="${item.name}"></a></td>
+                <td th:text="${item.price}"></td>
+            </tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </div>
+</div>
+</body>
+</html>

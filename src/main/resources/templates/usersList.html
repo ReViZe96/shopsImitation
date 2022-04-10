@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Все покупатели</title>
+</head>
+<body>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{/users/add}">Добавить покупателя</a>
+<a th:href="@{/users/find}">Найти покупателей</a>
+<h1>Все покупатели</h1>
+<table>
+    <tr>
+        <td><h3>ФИО</h3></td>
+        <td><h3>Возраст</h3></td>
+    </tr> <!--ряд с ячейками заголовков-->
+    <tr th:each="user : ${allUsers}">
+        <td><a th:href="'/users/showCurrent/'+${user.id}" th:text="${user.name}"></a></td>
+        <td><a th:text="${user.age}"></a></td>
+        <td>
+            <form th:action="'/users/editName/'+${user.id}" method="post">
+                <input type="text" pattern=".{1,500}" name="name" placeholder="Введите новое ФИО" required>
+                <button type="submit">Изменить ФИО</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/users/editSeria/'+${user.id}" method="post">
+                <input type="text" pattern="\d{4}" name="seria" placeholder="Введите новую серию паспорта" required>
+                <button type="submit">Изменить серию паспорта</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/users/editNumber/'+${user.id}" method="post">
+                <input type="text" pattern="\d{6}" name="number" placeholder="Введите новый номер паспорта" required>
+                <button type="submit">Изменить номер паспорта</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/users/editAge/'+${user.id}" method="post">
+                <input type="text" pattern="\d{1,5}" name="age" placeholder="Ведите новый возраст" required>
+                <button type="submit">Изменить возраст</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/users/deleteCurrent/'+${user.id}" method="post">
+                <button type="submit">Удалить покупателя</button>
+            </form>
+        </td>
+    </tr> <!--ряд с ячейками тела таблицы-->
+</table>
+</body>
+</html>

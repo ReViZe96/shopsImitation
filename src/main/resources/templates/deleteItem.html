@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Удалить товары</title>
+</head>
+<body>
+<h1>Удаление товаров с указанным названием</h1>
+<form th:action="@{/items/delete}" method="post">
+    <input type="text" pattern=".{1,500}" name="name" placeholder="Введите название" required>
+    <input type="submit" value="Удалить товары">
+</form>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{/items/showAll}">Показать все товары</a>
+</body>
+</html>

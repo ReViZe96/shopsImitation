@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Все товары</title>
+</head>
+<body>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{/items/add}">Добавить товар</a>
+<a th:href="@{/items/find}">Найти товары</a><br><br>
+<h1>Все товары</h1>
+<table>
+    <tr>
+        <td><h3>Название</h3></td>
+        <td><h3>Цена</h3></td>
+    </tr> <!--ряд с ячейками заголовков-->
+    <tr th:each="items : ${allItems}">
+        <td><a th:href="'/items/showCurrent/'+${items.id}" th:text="${items.name}"/></td>
+        <td th:text="${items.price}"></td>
+        <td>
+            <form th:action="'/items/editName/'+${items.id}" method="post">
+                <input type="text" pattern=".{1,500}" name="name" placeholder="Введите новое название" required>
+                <button type="submit">Изменить название</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/items/editDescription/'+${items.id}" method="post">
+                <input type="text" pattern=".{1,10000}" name="description" placeholder="Введите новое описание"
+                       required>
+                <button type="submit">Изменить описание</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/items/editPrice/'+${items.id}" method="post">
+                <input type="text" pattern="\d{1,18}" name="price" placeholder="Введите новую цену" required>
+                <button type="submit">Изменить цену</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/items/deleteCurrent/'+${items.id}" method="post">
+                <button type="submit">Удалить товар</button>
+            </form>
+        </td>
+    </tr> <!--ряд с ячейками тела таблицы-->
+</table>
+</body>
+</html>

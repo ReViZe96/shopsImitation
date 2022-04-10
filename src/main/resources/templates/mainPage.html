@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Главная страница</title>
+</head>
+<body>
+<h1>Иммитатор онлайн-магазина</h1>
+<a th:href="@{/users/showAll}">Все покупатели</a>
+<a th:href="@{/items/showAll}">Все товары</a><br><br>
+<a th:href="@{/users/add}">Добавить покупателя</a>
+<a th:href="@{/items/add}">Добавить товар</a><br><br>
+<a th:href="@{/users/find}">Найти покупателей</a>
+<a th:href="@{/items/find}">Найти товары</a><br><br>
+<a th:href="@{/users/delete}">Удалить покупателей</a>
+<a th:href="@{/items/delete}">Удалить товары</a><br><br>
+<a th:href="@{/users/showItByUs}">Показать все товары конкретного покупателя</a>
+<a th:href="@{/items/showUsByIt}">Показать всех покупателей конкретного товара</a><br><br>
+<a th:href="@{/buy/make}">Осуществить покупку</a>
+</body>
+</html>

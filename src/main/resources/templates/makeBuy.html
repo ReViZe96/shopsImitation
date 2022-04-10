@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Осуществить покупку</title>
+</head>
+<body>
+<form th:action="@{/buy/make}" method="post">
+    <h3>ПОКУПАТЕЛЬ</h3>
+    <input type="text" pattern=".{1,500}" name="usersName" placeholder="Введите Ф.И.О." required/>
+    <input type="text" pattern="\d{4}" name="usersSeria" placeholder="Введите серию пасспорта" required>
+    <input type="text" pattern="\d{6}" name="usersNumber" placeholder="Введите серию пасспорта" required><br><br>
+    <h3>ТОВАР</h3>
+    <input type="text" pattern=".{1,500}" name="itemsName" placeholder="Введите название товара" required/>
+    <input type="text" pattern=".{1,10000}" name="itemsDescription" placeholder="Введите описание товара" required/>
+    <input type="text" pattern="\d{1,10}" name="itemsPrice" placeholder="Введите цену товара" required><br><br>
+    <input type="submit" value="Совершить покупку">
+    <input type="reset" value="Очистить форму"><br><br>
+    <a th:href="@{'/users/showAll'}">Все покупатели</a>
+    <a th:href="@{'/items/showAll'}">Все товары</a>
+</form>
+<a th:href="@{/mainPage}">На главную</a>
+</body>
+</html>

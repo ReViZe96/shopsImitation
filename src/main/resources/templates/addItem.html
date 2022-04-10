@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Добавить товар</title>
+</head>
+<body>
+<h1>Добавить товар</h1>
+<form th:action="@{'/items/add'}" th:object="${item}" method="post">
+    <input type="text" pattern=".{1,500}" name="name" placeholder="Введите название товара" required/>
+    <input type="text" pattern=".{1,10000}" name="description" placeholder="Введите описание товара" required>
+    <input type="text" pattern="\d{1,18}" name="price" placeholder="Введите цену товара" required>
+    <input type="submit" value="Добавить товар">
+    <input type="reset" value="Очистить форму">
+</form>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{/items/showAll}">Показать все товары</a>
+</body>
+</html>

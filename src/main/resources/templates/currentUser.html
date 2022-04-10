@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="${user.name}"></title>
+</head>
+<body>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{/users/showAll}">Показать список покупателей</a>
+<h3 th:text="${user.name}"></h3>
+<p th:text="'Возраст: '+${user.age}"></p>
+<p th:text="'Серия паспорта: '+${user.seria}"></p>
+<p th:text="'Номер паспорта: '+${user.number}"></p>
+<table th:if="${!(user.items.empty())}">
+    <tr>
+        <td><h3>Список покупок:</h3></td>
+    </tr>
+    <tr th:each="item : ${user.items}">
+        <td th:text="${item.name}"></td>
+    </tr>
+</table>
+<h3 th:if="${user.items.empty()}">Список покупок пуст</h3>
+</body>
+</html>

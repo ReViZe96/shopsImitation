@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Покупка не удалась</title>
+</head>
+<body>
+<h1>Покупка невозможна. Указан незарегистрированный покупатели и/или товар.</h1>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{'/users/showAll'}">Все покупатели</a>
+<a th:href="@{'/items/showAll'}">Все товары</a>
+</body>
+</html>

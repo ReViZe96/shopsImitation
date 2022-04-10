@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Найти покупателей</title>
+</head>
+<body>
+<h1>Поиск покупателей с указанными ФИО</h1>
+<form th:action="@{/users/find}" method="post">
+    <input type="text" pattern=".{1,500}" name="name" placeholder="Введите ФИО" required>
+    <input type="submit" value="Найти покупателей">
+</form>
+<a th:href="@{/mainPage}">На главную</a>
+<a th:href="@{/users/showAll}">Показать всех покупателей</a>
+</body>
+</html>
